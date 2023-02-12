@@ -21,18 +21,17 @@ public class RulesManager : MonoBehaviour
     {
         TurnPanel.OnCloseTurnPanel += TurnStart;
         StartingMenu.OnGameStart += GameStart;
-        GameState.OnStateChange += GameStateHandle;
+        //GameState.OnStateChange += GameStateHandle;
     }
     void Start()
     {
-        agent.gameObject.SetActive(false);
-        
+        agent.gameObject.SetActive(false);        
     }
     private void OnDisable()
     {
         TurnPanel.OnCloseTurnPanel -= TurnStart;
         StartingMenu.OnGameStart -= GameStart;
-        GameState.OnStateChange -= GameStateHandle;
+        //GameState.OnStateChange -= GameStateHandle;
     }
 
     void Update()
@@ -44,12 +43,14 @@ public class RulesManager : MonoBehaviour
     }
     public void GameStart(int players, bool sirJones)
     {
+        agent.gameObject.SetActive(true);
         startingPosition = agent.transform.position;
         humanPlayers = players;
         TurnStart();
     }
     void TurnStart()
     {
+        GameState.InGame();
         agent.transform.position = startingPosition;
         distanceTraveled.countingDistance = true;
         distanceTraveled.distanceTraveled = 0f;

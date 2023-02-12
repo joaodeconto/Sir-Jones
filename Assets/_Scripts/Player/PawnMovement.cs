@@ -9,7 +9,7 @@ public class PawnMovement : MonoBehaviour
     public NavMeshAgent agent;
     private Vector2 touchPosition;
     public float distanceTraveled;
-    public StructureInteraction targetStrucure;
+    public SO_Structure.StructureType targetStrucure;
 
     private void OnClick()
     {
@@ -23,7 +23,7 @@ public class PawnMovement : MonoBehaviour
 
     private void Update()
     {
-        //if (GameState.state != GameState.State.InGame) return;
+        if (GameState.state != GameState.State.InGame) return;
 
         if (touchPosition != Vector2.zero)
         {
@@ -36,9 +36,10 @@ public class PawnMovement : MonoBehaviour
                 agent.destination = hit.point;
                 if (hit.collider.CompareTag("Structure"))
                 {
-                    StructureInteraction si = hit.transform.GetComponent<StructureInteraction>();
+                    //TODO check for entranceStructure  and set as current destination
+                    SO_Structure.StructureType si = hit.transform.GetComponent<StructureInteraction>().dataStructure.structureType;
                     targetStrucure = si;
-                    Debug.Log("Hit structure " + si.name);
+                    Debug.Log("Hit structure " + si.ToString());
 
                 }
             }

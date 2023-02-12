@@ -5,6 +5,9 @@ public class SO_Structure : ScriptableObject
 {
     [Header("Structure Information")]
     public string structureName;
+    public string structureDescription;
+    public Vector3 structurePosition;
+    public Color[] structurePallete;
     public Material structureMaterial;
     public StructureType structureType;
     public GameObject structurePrefab;

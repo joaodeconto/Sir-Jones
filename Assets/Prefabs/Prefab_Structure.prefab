@@ -43,10 +43,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2078825188697613098}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
+  m_Size: {x: 14, y: 10, z: 14}
   m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &7436109894346757683
 MonoBehaviour:
@@ -61,9 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionMenu: {fileID: 0}
+  entranceStructure: {fileID: 0}
   actionDropdown: {fileID: 0}
-  acceptButton: {fileID: 0}
-  closeButton: {fileID: 0}
   isSelected: 0
   dataStructure: {fileID: 11400000, guid: e455ef3688972bf48aa8b6dea948c7ad, type: 2}
 --- !u!1 &3761988167757797988

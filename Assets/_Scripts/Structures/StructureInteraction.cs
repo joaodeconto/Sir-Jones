@@ -5,6 +5,7 @@ using TMPro;
 public class StructureInteraction : MonoBehaviour
 {
     public GameObject interactionMenu;
+    public Transform entranceStructure;
     public TMP_Dropdown actionDropdown;
     private Button acceptButton;
     private Button closeButton;
@@ -15,13 +16,17 @@ public class StructureInteraction : MonoBehaviour
     private void Start()
     {
         SetUI();
+        this.name = dataStructure.structureName;
     }
 
+    //TODO Better method to detect player enter building
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<PawnMovement>().targetStrucure = this)
+            //TODO Pawn instance?
+            PawnMovement pm = other.GetComponent<PawnMovement>();
+            if (pm.targetStrucure == dataStructure.structureType)
             {
                 Debug.Log("entered target " + this.name);
                 interactionMenu.SetActive(true);
