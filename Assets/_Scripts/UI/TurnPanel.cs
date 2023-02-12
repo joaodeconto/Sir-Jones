@@ -11,27 +11,23 @@ public class TurnPanel : MonoBehaviour
 
     private void Start()
     {
-        continueButton.onClick.AddListener(ClosePanel);
-        RulesManager.OnTurnEnd += ShowPanel;
-        RulesManager.OnTurnStart += ClosePanel;
+        continueButton.onClick.AddListener(ClosePanel);        
         gameObject.SetActive(false);
+        RulesManager.OnTurnEnd += ShowPanel;
     }
-
     private void OnDestroy()
     {
         RulesManager.OnTurnEnd -= ShowPanel;
-        RulesManager.OnTurnStart -= ClosePanel;
-    }
-
+    }  
     private void ShowPanel()
     {
-        endTurnMessage.text = "Your turn has ended. You gone far enougth.";
+        endTurnMessage.text = "Your turn has ended.";
         gameObject.SetActive(true);
     }
 
     private void ClosePanel()
     {
         gameObject.SetActive(false);
-        OnCloseTurnPanel?.Invoke();
+        OnCloseTurnPanel();
     }
 }

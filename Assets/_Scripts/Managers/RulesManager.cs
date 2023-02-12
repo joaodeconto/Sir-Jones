@@ -17,21 +17,29 @@ public class RulesManager : MonoBehaviour
     private bool pawnActive;
     public static int humanPlayers = 0;
 
-    void Start()
+    private void OnEnable()
     {
         TurnPanel.OnCloseTurnPanel += TurnStart;
         StartingMenu.OnGameStart += GameStart;
+        GameState.OnStateChange += GameStateHandle;
     }
-    private void OnDestroy()
+    void Start()
+    {
+        agent.gameObject.SetActive(false);
+        
+    }
+    private void OnDisable()
     {
         TurnPanel.OnCloseTurnPanel -= TurnStart;
+        StartingMenu.OnGameStart -= GameStart;
+        GameState.OnStateChange -= GameStateHandle;
     }
 
     void Update()
     {
-        if (distanceTraveled.distanceTraveled > maxMovement)
+        if (pawnActive && distanceTraveled.distanceTraveled > maxMovement)
         {
-            EndTurn();
+            TurnEnd();
         }
     }
     public void GameStart(int players, bool sirJones)
@@ -42,21 +50,39 @@ public class RulesManager : MonoBehaviour
     }
     void TurnStart()
     {
-        agent.ResetPath();
         agent.transform.position = startingPosition;
-        pawnActive = true;
         distanceTraveled.countingDistance = true;
         distanceTraveled.distanceTraveled = 0f;
-        OnTurnStart?.Invoke();
+        pawnActive = true;
     }
 
-    void EndTurn()
+    void TurnEnd()
     {
         pawnActive = false;
         distanceTraveled.countingDistance = false;
         agent.isStopped = true;
         agent.ResetPath();
-        OnTurnEnd?.Invoke();
+        GameState.Pause();
+        OnTurnEnd();
         turnCount++;
+    }
+
+    void GameStateHandle(GameState.State state)
+    {
+        switch (state)
+        {
+            case GameState.State.InGame:
+                agent.gameObject.SetActive(true);
+                break;
+            case GameState.State.MenuStart:
+                agent.gameObject.SetActive(false);
+                break;
+            case GameState.State.Wait:
+                agent.gameObject.SetActive(false);
+                break;
+            default:
+                agent.gameObject.SetActive(false);
+                break;
+        }
     }
 }

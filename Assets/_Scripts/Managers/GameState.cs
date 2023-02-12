@@ -7,43 +7,49 @@ public class GameState : MonoBehaviour
     public static event GameStateEvent OnStateChange;
 
     public enum State
-    {
-        Intro,
-        Start,
-        Gameplay,
+    {        
         Pause,
-        Wait
+        Wait,
+        Intro,
+        MenuStart,
+        InGame,        
+        EndGame
     }
 
     public static State state;
 
     void Start()
     {
-        state = State.Intro;
-        OnStateChange?.Invoke(state);
+        state = State.Wait;        
+        OnStateChange(state);
     }
 
     public static void MenuStart()
     {
-        state = State.Start;
-        OnStateChange?.Invoke(state);
+        state = State.MenuStart;
+        OnStateChange(state);
     }
 
-    public static void StartGameplay()
+    public static void InGame()
     {
-        state = State.Gameplay;
-        OnStateChange?.Invoke(state);
+        state = State.InGame;
+        OnStateChange(state);
+    }
+    public static void EndGame()
+    {
+        state = State.EndGame;
+        OnStateChange(state);
     }
 
     public static void Pause()
     {
         state = State.Pause;
-        OnStateChange?.Invoke(state);
+        OnStateChange(state);
     }
 
     public static void Wait()
     {
         state = State.Wait;
-        OnStateChange?.Invoke(state);
+        OnStateChange(state);
     }
 }

@@ -49,6 +49,7 @@ public class StartingMenu : MonoBehaviour
     {
         ClosePanel();
         OnGameStart(selectedPlayers, againstSirJones);
+        GameState.InGame();
         Debug.Log("Starting game with " + selectedPlayers + " players, against Sir Jones: " + againstSirJones);
     }
 
