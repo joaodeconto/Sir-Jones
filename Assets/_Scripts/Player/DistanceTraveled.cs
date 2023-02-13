@@ -10,12 +10,10 @@ public class DistanceTraveled : MonoBehaviour
     public TMP_Text distanceText;
     public bool countingDistance;
 
-    private Vector3 startingPosition;
     public float distanceTraveled = 0;
 
     void Start()
     {
-        startingPosition = agent.transform.position;
         distanceText = UIManager.Inst.distanceText;
     }
 

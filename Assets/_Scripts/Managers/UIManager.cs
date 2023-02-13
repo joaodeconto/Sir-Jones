@@ -15,9 +15,11 @@ namespace BWV
         public GameObject gameOverPanel;
         public GameObject startPanel;
         public GameObject pausePanel;
+        public StatsPanel statsPanel;
         public Button closePanelButton;
         public TMP_Text stateText;
         public TMP_Text distanceText;
+        public Slider timeSlider;
 
         private Button pauseButton;
         private void Awake()
@@ -35,21 +37,16 @@ namespace BWV
 
         private void OnEnable()
         {
-            GameState.OnStateChange += ShowGameState;
+            GameState.OnStateChange += GameStateHandle;
         }
 
         private void OnDisable()
         {
-            GameState.OnStateChange -= ShowGameState;
+            GameState.OnStateChange -= GameStateHandle;
         }
         private void Start()
         {
             SetPauseUI();
-        }
-
-        private void ShowGameState(GameState.State state)
-        {
-            stateText.text= state.ToString();
         }
 
         private void PauseMenu()
@@ -64,5 +61,36 @@ namespace BWV
             pauseButton = playerPanel.transform.Find("Button_Pause").GetComponent<Button>();
             pauseButton.onClick.AddListener(PauseMenu);
         }
+
+        public void RefreshTimeSlider(float maxTime, float currentTime)
+        {
+            timeSlider.maxValue = maxTime;
+            timeSlider.value= currentTime;
+        }
+        public void FailToSpendTime(float timeDenied)
+        {
+            Debug.LogWarning("FAILED TO SPEND TIME " + timeDenied);
+        }
+
+        void GameStateHandle(GameState.State state)
+        {
+            stateText.text = state.ToString();
+            switch (state)
+            {
+                case GameState.State.InGame:
+                    statsPanel.Open();
+                    break;
+                case GameState.State.MenuStart:
+                    statsPanel.Close();
+                    break;
+                case GameState.State.Intro:
+                    statsPanel.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
+
+   
 }

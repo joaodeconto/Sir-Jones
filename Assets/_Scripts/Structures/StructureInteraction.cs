@@ -12,6 +12,7 @@ namespace BWV
         private Button acceptButton;
         private Button closeButton;
         public bool isSelected;
+        private PawnStats pawnStats;
 
         public SO_Structure dataStructure;
 
@@ -33,6 +34,7 @@ namespace BWV
                     Debug.Log("entered target " + this.name);
                     interactionMenu.SetActive(true);
                     GameState.Pause();
+                    pawnStats = other.GetComponent<PawnStats>();
                 }
             }
         }
@@ -41,8 +43,7 @@ namespace BWV
         {
             if (other.CompareTag("Player"))
             {
-                //interactionMenu.SetActive(false);
-                //StateManager.instance.SetState(StateManager.State.Move);
+                pawnStats = null;
             }
         }
 
@@ -51,17 +52,24 @@ namespace BWV
             switch (actionDropdown.value)
             {
                 case 0:
-                    // Perform action 1
+                    if (pawnStats.SpendTime(20f))
+                        pawnStats.stats.gold += 10;
+                    else UIManager.Inst.FailToSpendTime(20f);
                     break;
                 case 1:
-                    // Perform action 2
+                    if (pawnStats.SpendTime(20f))
+                        pawnStats.stats.favor += 1;
+                    else UIManager.Inst.FailToSpendTime(20f);
                     break;
                 case 2:
-                    // Perform action 3
+                    if (pawnStats.SpendTime(20f))
+                        pawnStats.stats.happiness += 1;
+                    else UIManager.Inst.FailToSpendTime(20f);
                     break;
                 default:
                     break;
             }
+            UIManager.Inst.statsPanel.RefreshStats(pawnStats.stats);
         }
         private void SetUI()
         {
