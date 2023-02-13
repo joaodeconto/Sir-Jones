@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.AI;
+using BWV;
 
 public class DistanceTraveled : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class DistanceTraveled : MonoBehaviour
     void Start()
     {
         startingPosition = agent.transform.position;
+        distanceText = UIManager.Inst.distanceText;
     }
 
     void Update()

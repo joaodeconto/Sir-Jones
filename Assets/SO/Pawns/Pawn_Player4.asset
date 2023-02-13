@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad0ae41fa36ced64389221a5c768ecff, type: 3}
-  m_Name: Pawn_SirJones
+  m_Name: Pawn_Player4
   m_EditorClassIdentifier: 
-  playerName: Sir Jones
-  playerColor: {r: 1, g: 0.983102, b: 0, a: 0}
-  playerNumber: 0
-  turnOrder: 4
+  playerName: Player 4
+  playerColor: {r: 0, g: 1, b: 0.052033424, a: 0}
+  playerNumber: 4
+  turnOrder: 3
   pawnPrefab: {fileID: 5125702755135616232, guid: 62926b228a371ec4a86d0dd002b0c36b, type: 3}
   startingPosition: {x: 0, y: 0, z: 0}

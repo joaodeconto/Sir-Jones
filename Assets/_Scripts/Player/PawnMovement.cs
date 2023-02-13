@@ -1,50 +1,51 @@
-using BWM;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-public class PawnMovement : MonoBehaviour
+namespace BWV
 {
-    public NavMeshAgent agent;
-    private Vector2 touchPosition;
-    public float distanceTraveled;
-    public SO_Structure.StructureType targetStrucure;
-
-    private void OnClick()
+    public class PawnMovement : MonoBehaviour
     {
-        touchPosition = Mouse.current.position.ReadValue();
-    }
+        public NavMeshAgent agent;
+        private Vector2 touchPosition;
+        public float distanceTraveled;
+        public StructureType targetStrucure;
 
-    private void TouchPerformed(InputAction.CallbackContext context)
-    {
-        touchPosition = context.ReadValue<Vector2>();
-    }
-
-    private void Update()
-    {
-        if (GameState.state != GameState.State.InGame) return;
-
-        if (touchPosition != Vector2.zero)
+        private void OnClick()
         {
-            Ray ray = Camera.main.ScreenPointToRay(touchPosition);
-            RaycastHit hit;
+            touchPosition = Mouse.current.position.ReadValue();
+        }
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        private void TouchPerformed(InputAction.CallbackContext context)
+        {
+            touchPosition = context.ReadValue<Vector2>();
+        }
+
+        private void Update()
+        {
+            if (GameState.state != GameState.State.InGame) return;
+
+            if (touchPosition != Vector2.zero)
             {
-                Debug.Log("Hit " + hit.transform.name);
-                agent.destination = hit.point;
-                if (hit.collider.CompareTag("Structure"))
+                Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
-                    //TODO check for entranceStructure  and set as current destination
-                    SO_Structure.StructureType si = hit.transform.GetComponent<StructureInteraction>().dataStructure.structureType;
-                    targetStrucure = si;
-                    Debug.Log("Hit structure " + si.ToString());
-
+                    Debug.Log("Hit " + hit.transform.name);
+                    agent.destination = hit.point;
+                    if (hit.collider.CompareTag("Structure"))
+                    {
+                        //TODO check for entranceStructure  and set as current destination
+                        StructureType si = hit.transform.GetComponent<StructureInteraction>().dataStructure.structureType;
+                        targetStrucure = si;
+                        Debug.Log("Hit structure " + si.ToString());
+                    }
+                    else targetStrucure = StructureType.none;
                 }
-            }
 
-            touchPosition = Vector2.zero;
+                touchPosition = Vector2.zero;
+            }
         }
     }
 }

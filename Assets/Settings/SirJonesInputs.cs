@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace BWM
+namespace BWV
 {
     public partial class @SirJonesInputs : IInputActionCollection2, IDisposable
     {
