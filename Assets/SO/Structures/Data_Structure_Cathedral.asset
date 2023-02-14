@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0914edceb9422f64a9ab0268cfc147b2, type: 3}
+  m_Name: Data_Structure_Cathedral
+  m_EditorClassIdentifier: 
+  structureName: Almost Sacred Temple
+  structureDescription: 'An awe-inspiring structure, the Cathedral boasts towering
+    spires and intricately carved stone facades, its walls adorned with stained glass
+    windows depicting scenes from the holy scriptures. The air is thick with the
+    scent of incense, and the soft glow of candlelight illuminates the solemn interior. '
+  structurePosition: {x: 0, y: 0, z: 0}
+  structurePallete: []
+  structureMaterial: {fileID: 2100000, guid: aba507236dc79c74fbe98339db760fdc, type: 2}
+  structureType: 12
+  structurePrefab: {fileID: 0}
+  structurePanel: {fileID: 0}
+  structureOpen: 0

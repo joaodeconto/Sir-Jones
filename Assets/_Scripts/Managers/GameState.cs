@@ -22,6 +22,7 @@ namespace BWV
         public static State state;
 
         public static bool IsInGame { get { return state == State.InGame; }}
+        public static bool IsPaused { get { return state == State.Pause; }}
 
         void Start()
         {

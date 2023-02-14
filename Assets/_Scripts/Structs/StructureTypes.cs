@@ -8,13 +8,16 @@ namespace BWV
         Slum,
         HuntingLodge,
         Alchemist,
-        BlackMarket,
+        Market,
         Tavern,
         Moneylender,
         Tailor,
         Fortress,
         Arena,
         Cathedral,
-        Workshop
+        Workshop,
+        Guild,
+        Stables,
+        Manor
     }
 }

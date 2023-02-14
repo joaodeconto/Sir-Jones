@@ -10,11 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0914edceb9422f64a9ab0268cfc147b2, type: 3}
-  m_Name: Data_Structure_Village
+  m_Name: Data_Structure_Slums
   m_EditorClassIdentifier: 
   structureName: Squatter's Village
+  structureDescription: ' A dilapidated and overcrowded area of the city, inhabited
+    by the poorest of the poor. The buildings are made of cheap materials and are
+    in a state of disrepair.. '
+  structurePosition: {x: 0, y: 0, z: 0}
+  structurePallete: []
   structureMaterial: {fileID: 2100000, guid: e9a916589b0036f41afe5473c655df6d, type: 2}
-  structureType: 2
+  structureType: 3
   structurePrefab: {fileID: 0}
   structurePanel: {fileID: 0}
   structureOpen: 0

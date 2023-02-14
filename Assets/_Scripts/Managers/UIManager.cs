@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,12 +9,14 @@ namespace BWV
         public static UIManager Inst;
 
         public GameObject playerPanel;
-        public GameObject structurePanel;
         public GameObject turnPanel;
         public GameObject gameOverPanel;
         public GameObject startPanel;
         public GameObject pausePanel;
+
+        public StructurePanel structurePanel;
         public StatsPanel statsPanel;
+
         public Button closePanelButton;
         public TMP_Text stateText;
         public TMP_Text distanceText;

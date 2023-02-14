@@ -8,19 +8,23 @@ namespace BWV
 {
     public class RulesManager : MonoBehaviour
     {
+        #region Events
         public static event UnityAction OnTurnEnd;
         public static event UnityAction OnTurnStart;
-        
+        #endregion
+
+        #region Fields
+
         public float maxMovement = 400f;
         public int turnCount = 0;
+        public static PawnStats pawnStats;
 
-        public NavMeshAgent agent;
-        public DistanceTraveled distanceTraveled;
-        public PawnStats pawnStats;
         private Vector3 startingPosition;
         private int playerInTurn = 0;
-        public GameObject pawnInTurn;
+        private GameObject pawnInTurn;
+        #endregion
 
+        #region UnityCallbacks
         private void OnEnable()
         {
             TurnPanel.OnCloseTurnPanel += TurnStart;
@@ -34,7 +38,7 @@ namespace BWV
 
         void Update()
         {
-            if (pawnInTurn != null)
+            if (GameState.IsInGame || GameState.IsPaused)
             {
                 UIManager.Inst.RefreshTimeSlider(maxMovement, pawnStats.TotalTime);
 
@@ -44,10 +48,13 @@ namespace BWV
                 }
             }          
         }
+        #endregion
+
+        #region Custom Methods
+
         public void GameStart()
         {
-            SetupPawnInTurn();            
-            startingPosition = agent.transform.position;
+            SetupPawnInTurn();
             TurnStart();
         }
         void TurnStart()
@@ -55,15 +62,14 @@ namespace BWV
             GameState.InGame();
             UIManager.Inst.statsPanel.RefreshStats(pawnStats.stats);
             pawnInTurn.transform.position = startingPosition;
-            distanceTraveled.countingDistance = true;
-            distanceTraveled.distanceTraveled = 0f;
-            pawnInTurn.SetActive(true);
+            pawnStats.MoveStartingPosition();
+            pawnStats.IsActive(true);
+            pawnStats.CountDistance(true);
         }
-
         void TurnEnd()
         {
-            pawnInTurn.SetActive(false);
-            pawnStats.distanceTraveled.countingDistance = false;
+            pawnStats.CountDistance(false);
+            pawnStats.IsActive(false);
             GameState.Pause();            
             playerInTurn = (playerInTurn + 1) % PlayersManager.playersIngame.Count;
             if (playerInTurn == 0) turnCount++;
@@ -75,30 +81,9 @@ namespace BWV
         {
             pawnInTurn = PlayersManager.playersIngame[playerInTurn];
             pawnStats = pawnInTurn.GetComponent<PawnStats>();
-            pawnStats.maxTime = maxMovement;
-            distanceTraveled = pawnInTurn.GetComponent<DistanceTraveled>();
-            agent = pawnInTurn.GetComponent<PawnMovement>().agent;
+            pawnStats.maxTime = maxMovement;            
             pawnStats.spentTime = 0;
         }
-
-
-        void GameStateHandle(GameState.State state)
-        {
-            switch (state)
-            {
-                case GameState.State.InGame:
-                    agent.gameObject.SetActive(true);
-                    break;
-                case GameState.State.MenuStart:
-                    agent.gameObject.SetActive(false);
-                    break;
-                case GameState.State.Wait:
-                    agent.gameObject.SetActive(false);
-                    break;
-                default:
-                    agent.gameObject.SetActive(false);
-                    break;
-            }
-        }
+        #endregion
     }
 }

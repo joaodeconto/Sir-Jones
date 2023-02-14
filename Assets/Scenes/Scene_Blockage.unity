@@ -457,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: eed96e737b62f814a804ba01558d99bc, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f844cbeda2e5e7488dc37e2ac04fba9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &36237895 stripped
@@ -541,7 +545,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87109340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00015258789}
+  m_LocalPosition: {x: 0, y: 0, z: 2.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -745,7 +749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5053613365629888447, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_text
-      value: 'Guild
+      value: 'Stables
 
 '
       objectReference: {fileID: 0}
@@ -764,7 +768,11 @@ PrefabInstance:
     - target: {fileID: 7207419114664816764, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2fdfd50004faca445b8de392d4f9081e, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d7de096d95dc434ebf562f7f1ec544c, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fa2adfd6c3822645a02122613c26089, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &124713499 stripped
@@ -1704,6 +1712,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4318b726b1526454d8b0096237197345, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d6ed99dcd6a6624990b5006d9fd9227, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &397552756 stripped
@@ -1970,6 +1982,7 @@ GameObject:
   - component: {fileID: 421026006}
   - component: {fileID: 421026009}
   - component: {fileID: 421026008}
+  - component: {fileID: 421026010}
   m_Layer: 5
   m_Name: StructurePanel
   m_TagString: Untagged
@@ -2041,6 +2054,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421026005}
   m_CullTransparentMesh: 1
+--- !u!114 &421026010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421026005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b33bf493060544db0d106e78c9a079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionDropdown: {fileID: 220526535}
 --- !u!1 &433909502
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,6 +4475,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 54122079c9dcb864bba8c2f82b8a466e, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: c9eba3035beed7740abe9671a5210413, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &1067147622 stripped
@@ -5597,6 +5627,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 513fb26fa10500f4da22c4d78224d05f, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 282024cdca785cc4fb78d6a198762be5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &1333065851 stripped
@@ -6557,11 +6591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5053613365629888447, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_text
-      value: Money Lender
+      value: Guild
       objectReference: {fileID: 0}
     - target: {fileID: 5053613365629888447, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_fontSize
-      value: 31.3
+      value: 44.75
       objectReference: {fileID: 0}
     - target: {fileID: 5249532840273697799, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_NavMeshLayer
@@ -6574,7 +6608,11 @@ PrefabInstance:
     - target: {fileID: 7207419114664816764, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2d7de096d95dc434ebf562f7f1ec544c, type: 2}
+      objectReference: {fileID: 2100000, guid: 2fdfd50004faca445b8de392d4f9081e, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 199f29f6856dc7547bfcea3f1b82d3e5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &1736227510 stripped
@@ -6655,7 +6693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5053613365629888447, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_text
-      value: Citadel
+      value: Tavern
       objectReference: {fileID: 0}
     - target: {fileID: 5053613365629888447, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_fontSize
@@ -6672,7 +6710,11 @@ PrefabInstance:
     - target: {fileID: 7207419114664816764, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2314421561f004b42add454fde9254ea, type: 2}
+      objectReference: {fileID: 2100000, guid: 554ef35f4f24eb348b294f75aa635a44, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: c4a4672a21f9bba48bd9fe986c5b624a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &1751421925 stripped
@@ -7213,6 +7255,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aba507236dc79c74fbe98339db760fdc, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: bd5e8f87a19a1064090d378319df22a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &1896317649 stripped
@@ -7355,6 +7401,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fef6c6022bcf73b44a4c4fc5ed28b5c8, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d34d8d0381259846a0c69417ed0283b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &1932277592 stripped
@@ -7717,10 +7767,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMovement: 200
   turnCount: 0
-  agent: {fileID: 0}
-  distanceTraveled: {fileID: 0}
-  pawnStats: {fileID: 0}
-  pawnInTurn: {fileID: 0}
 --- !u!4 &1949123462
 Transform:
   m_ObjectHideFlags: 0
@@ -7768,11 +7814,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPanel: {fileID: 1322433593}
-  structurePanel: {fileID: 421026005}
   turnPanel: {fileID: 1522001533}
   gameOverPanel: {fileID: 93390531}
   startPanel: {fileID: 93390531}
   pausePanel: {fileID: 1145873324}
+  structurePanel: {fileID: 421026010}
   statsPanel: {fileID: 87109342}
   closePanelButton: {fileID: 334797409469101544, guid: 9dd3baaf4e18b4f458aa3b1c889edfd5, type: 3}
   stateText: {fileID: 1863823111}
@@ -8005,6 +8051,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bc062d777e2eeb04da67213cd62e386c, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 6947181b4efd789478b780a2eb553f2d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &2001795582 stripped
@@ -8103,6 +8153,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ce14ef5d2e78c854aa3f8309aaa2b59d, type: 2}
+    - target: {fileID: 7436109894346757683, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
+      propertyPath: dataStructure
+      value: 
+      objectReference: {fileID: 11400000, guid: 943a961ac832c9942a3ad45d9c2f867e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
 --- !u!4 &2005730522 stripped

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0914edceb9422f64a9ab0268cfc147b2, type: 3}
+  m_Name: Data_Structure_Tailor
+  m_EditorClassIdentifier: 
+  structureName: Seamstress' Shop
+  structureDescription: 'This charming shop is nestled in the heart of the city,
+    its walls adorned with bolts of luxurious fabric and shelves lined with spools
+    of thread. Skilled seamstresses toil away at their sewing machines, creating
+    and altering the finest of garments to suit the needs of their clients. '
+  structurePosition: {x: 0, y: 0, z: 0}
+  structurePallete: []
+  structureMaterial: {fileID: 2100000, guid: 54122079c9dcb864bba8c2f82b8a466e, type: 2}
+  structureType: 9
+  structurePrefab: {fileID: 0}
+  structurePanel: {fileID: 0}
+  structureOpen: 0

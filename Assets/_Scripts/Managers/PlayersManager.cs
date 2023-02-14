@@ -7,12 +7,15 @@ namespace BWV
 {
     public class PlayersManager : MonoBehaviour
     {
+        #region Fields
         public SO_Pawn[] playersPreset;
         public static List<GameObject> playersIngame = new();
         public static event UnityAction OnPlayersSetup;
 
         public Vector3 startingRef;
+        #endregion
 
+        #region Unity Callbacks
         private void OnEnable()
         {
             StartingMenu.OnGameStart += SetupPlayers;
@@ -22,6 +25,7 @@ namespace BWV
         {
             StartingMenu.OnGameStart -= SetupPlayers;
         }
+        #endregion
 
         void SetupPlayers(int humanPlayers, bool sirJones)
         {
