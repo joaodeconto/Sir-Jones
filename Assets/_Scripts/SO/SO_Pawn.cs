@@ -11,5 +11,7 @@ namespace BWV
         public int turnOrder;
         public GameObject pawnPrefab;
         public Vector3 startingPosition;
+        public Pawn pawnStats;
+        public Goals pawnGoal;
     }
 }

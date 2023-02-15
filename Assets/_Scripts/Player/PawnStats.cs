@@ -1,66 +1,35 @@
-using System.Runtime.InteropServices.WindowsRuntime;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace BWV
 {
     public class PawnStats : MonoBehaviour
     {
-        #region Fields
-        public SO_Pawn pawnData;
-        public GameObject pawnMesh;
-        public DistanceTraveled distanceTraveled;
-        public TMP_Text pawnTag;
-        public PlayerStats stats;
-        public float spentTime;
-        public float maxTime;
-        public float TotalTime { get { return spentTime + distanceTraveled.distanceTraveled; } }
-        public float RemainingTime { get { return maxTime - TotalTime; } }
-        #endregion
+        public Dictionary<StatsTypes, int> stats = new Dictionary<StatsTypes, int>()
+        {
+            { StatsTypes.Gold, 0 },
+            { StatsTypes.Dexterity, 0 },
+            { StatsTypes.Strength, 0 },
+            { StatsTypes.Health, 0 },
+            { StatsTypes.Nobility, 0 },
+            { StatsTypes.Morale, 0 },
+            { StatsTypes.Charisma, 0 },
+            { StatsTypes.Experience, 0 }
+        };
 
-        #region Unity Callbacks
-        private void Awake()
+        public void AddStat(StatsTypes statType, int amount)
         {
-            distanceTraveled = GetComponent<DistanceTraveled>();
-        }
-        private void Start()
-        {
-            this.name = "Player -> " + pawnData.name;            
-            pawnMesh.GetComponent<MeshRenderer>().material.color = pawnData.playerColor;
-            pawnTag.text = pawnData.name;
-        }
-        #endregion
-
-        #region Custom Methods
-        public void SetStartingPosition(Vector3 startPosition)
-        {
-            pawnData.startingPosition = startPosition;
+            stats[statType] += amount;
         }
 
-        public void MoveStartingPosition()
+        public void SubtractStat(StatsTypes statType, int amount)
         {
-            this.transform.position = pawnData.startingPosition;
+            stats[statType] -= amount;
         }
 
-        public void IsActive(bool active)
+        public int GetStat(StatsTypes statType)
         {
-            this.gameObject.SetActive(active);
+            return stats[statType];
         }
-
-        public void CountDistance(bool active)
-        {
-            distanceTraveled.countingDistance = active;
-            distanceTraveled.distanceTraveled = 0f;
-        }
-
-        public bool SpendTime(float time)
-        {
-            if (time > RemainingTime) return false;
-
-            spentTime += time;
-            return true;
-        }
-        #endregion
     }
 }

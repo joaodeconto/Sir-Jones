@@ -15,7 +15,7 @@ namespace BWV
             descriptionStats[2].text = "Favor";
             descriptionStats[3].text = "Title";
         }
-        public void RefreshStats(PlayerStats playerStats) 
+        public void RefreshGoals(Goals playerStats) 
         {
             valueStats[0].text = playerStats.gold.ToString();
             valueStats[1].text = playerStats.happiness.ToString();

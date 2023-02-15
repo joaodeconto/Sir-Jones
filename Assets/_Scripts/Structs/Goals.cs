@@ -1,7 +1,7 @@
 
 namespace BWV
 {
-    public struct PlayerStats
+    public struct Goals
     {
         public int gold;
         public int happiness;

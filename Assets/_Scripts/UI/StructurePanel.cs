@@ -24,28 +24,28 @@ namespace BWV
         }
         void AcceptAction()
         {
-            PawnStats pawnStats = RulesManager.pawnStats;
+            Pawn _pawn = RulesManager._pawn;
             switch (actionDropdown.value)
             {
                 case 0:
-                    if (pawnStats.SpendTime(20f))
-                        pawnStats.stats.gold += 10;
+                    if (_pawn.SpendTime(20f))
+                        _pawn.pawnGoals.gold += 10;
                     else UIManager.Inst.FailToSpendTime(20f);
                     break;
                 case 1:
-                    if (pawnStats.SpendTime(20f))
-                        pawnStats.stats.favor += 1;
+                    if (_pawn.SpendTime(20f))
+                        _pawn.pawnGoals.favor += 1;
                     else UIManager.Inst.FailToSpendTime(20f);
                     break;
                 case 2:
-                    if (pawnStats.SpendTime(20f))
-                        pawnStats.stats.happiness += 1;
+                    if (_pawn.SpendTime(20f))
+                        _pawn.pawnGoals.happiness += 1;
                     else UIManager.Inst.FailToSpendTime(20f);
                     break;
                 default:
                     break;
             }
-            UIManager.Inst.statsPanel.RefreshStats(pawnStats.stats);
+            UIManager.Inst.statsPanel.RefreshGoals(_pawn.pawnGoals);
         }
         public void Open(SO_Structure data)
         {

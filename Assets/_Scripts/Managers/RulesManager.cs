@@ -17,7 +17,7 @@ namespace BWV
 
         public float maxMovement = 400f;
         public int turnCount = 0;
-        public static PawnStats pawnStats;
+        public static Pawn _pawn;
 
         private Vector3 startingPosition;
         private int playerInTurn = 0;
@@ -40,9 +40,9 @@ namespace BWV
         {
             if (GameState.IsInGame || GameState.IsPaused)
             {
-                UIManager.Inst.RefreshTimeSlider(maxMovement, pawnStats.TotalTime);
+                UIManager.Inst.RefreshTimeSlider(maxMovement, _pawn.TotalTime);
 
-                if (pawnStats.TotalTime > maxMovement)
+                if (_pawn.TotalTime > maxMovement)
                 {
                     TurnEnd();
                 }
@@ -60,16 +60,16 @@ namespace BWV
         void TurnStart()
         {
             GameState.InGame();
-            UIManager.Inst.statsPanel.RefreshStats(pawnStats.stats);
+            UIManager.Inst.statsPanel.RefreshGoals(_pawn.pawnGoals);
             pawnInTurn.transform.position = startingPosition;
-            pawnStats.MoveStartingPosition();
-            pawnStats.IsActive(true);
-            pawnStats.CountDistance(true);
+            _pawn.MoveStartingPosition();
+            _pawn.IsActive(true);
+            _pawn.CountDistance(true);
         }
         void TurnEnd()
         {
-            pawnStats.CountDistance(false);
-            pawnStats.IsActive(false);
+            _pawn.CountDistance(false);
+            _pawn.IsActive(false);
             GameState.Pause();            
             playerInTurn = (playerInTurn + 1) % PlayersManager.playersIngame.Count;
             if (playerInTurn == 0) turnCount++;
@@ -80,9 +80,9 @@ namespace BWV
         void SetupPawnInTurn()
         {
             pawnInTurn = PlayersManager.playersIngame[playerInTurn];
-            pawnStats = pawnInTurn.GetComponent<PawnStats>();
-            pawnStats.maxTime = maxMovement;            
-            pawnStats.spentTime = 0;
+            _pawn = pawnInTurn.GetComponent<Pawn>();
+            _pawn.maxTime = maxMovement;            
+            _pawn.spentTime = 0;
         }
         #endregion
     }

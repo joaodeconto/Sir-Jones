@@ -38,7 +38,7 @@ namespace BWV
                 //playersPreset[i].playerNumber = i + 1;
                 //playersPreset[i].turnOrder = i;
                 GameObject pawn = Instantiate(playersPreset[i].pawnPrefab, startingRef, Quaternion.identity);
-                pawn.GetComponent<PawnStats>().pawnData = playersPreset[i];
+                pawn.GetComponent<Pawn>().pawnData = playersPreset[i];
                 playersIngame.Add(pawn);
             }
             OnPlayersSetup();
