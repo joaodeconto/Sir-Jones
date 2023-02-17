@@ -7,7 +7,7 @@ namespace BWV
 {
     public class StructureStats : MonoBehaviour
     {
-        SO_Structure structureData;
+        StructureSO structureData;
 
         private string structureName;
         private string structureDescription;

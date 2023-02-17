@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using TMPro;
 using UnityEngine;
@@ -7,24 +8,64 @@ namespace BWV
     public class StructurePanel : MonoBehaviour
     {
         public TMP_Dropdown actionDropdown;
-        private Button acceptButton;
-        private Button closeButton;
-        private TMP_Text text_Header;
-        private TMP_Text text_Paragraph;
+        public Button jobButton;
+        public Button acceptButton;
+        public Button closeButton;
+        public TMP_Text text_Header;
+        public TMP_Text text_Paragraph;
+        private JobListSO jobList;
+        private Pawn _pawn;
+        private StructureSO structSO;
 
         private void Start()
-        {            
-            text_Header = transform.Find("Text_Header").GetComponent<TMP_Text>();
-            text_Paragraph = transform.Find("Text_Paragraph").GetComponent<TMP_Text>();
-            acceptButton = transform.Find("Button_Do").GetComponent<Button>();
-            acceptButton.onClick.AddListener(AcceptAction);
-            closeButton = transform.Find("Button_Exit").GetComponent<Button>();
+        {
+            //GAMBI made variable public
+            //text_Header = transform.Find("Text_Header").GetComponent<TMP_Text>();
+            //text_Paragraph = transform.Find("Text_Paragraph").GetComponent<TMP_Text>();
+            // jobButton = transform.Find("Button_Job").GetComponent<Button>();
+            //closeButton = transform.Find("Button_Exit").GetComponent<Button>();
+            //acceptButton = transform.Find("Button_Do").GetComponent<Button>();
+            jobButton.onClick.AddListener(JobButton);
+            acceptButton.onClick.AddListener(AcceptAction);            
             closeButton.onClick.AddListener(Close);
             this.gameObject.SetActive(false);
         }
-        void AcceptAction()
+        private void OnEnable()
         {
-            Pawn _pawn = RulesManager._pawn;
+            _pawn = RulesManager._pawn;
+        }
+
+        private void JobButton()
+        {
+            // Clear any existing options in the dropdown
+            actionDropdown.ClearOptions();
+
+            // Add each job in the availableJobs list to the dropdown
+            foreach (var job in jobList.availableJobs)
+            {
+                // Add the job name as an option in the dropdown
+                actionDropdown.options.Add(new TMP_Dropdown.OptionData(job.name));
+            }
+
+            // Select the first job in the dropdown
+            if (actionDropdown.options.Count > 0)
+            {
+                actionDropdown.value = 0;
+            }
+            actionDropdown.onValueChanged.AddListener(OnJobSelected);
+        }
+
+        private void OnJobSelected(int jobId)
+        {
+            JobSO job = jobList.availableJobs[jobId];
+            if(JobManager.TryAssignJob(_pawn, job))
+            {
+                _pawn.pawnJob = new Job(_pawn, job);
+            }
+        }
+
+        void AcceptAction()
+        {            
             switch (actionDropdown.value)
             {
                 case 0:
@@ -47,11 +88,13 @@ namespace BWV
             }
             UIManager.Inst.statsPanel.RefreshGoals(_pawn.pawnGoals);
         }
-        public void Open(SO_Structure data)
+        public void Open(StructureSO data)
         {
+            structSO = data;
+            jobList = structSO.structureJobs;
             this.gameObject.SetActive(true);
-            text_Header.text = data.structureName;
-            text_Paragraph.text = data.structureDescription;
+            text_Header.text = structSO.structureName;
+            text_Paragraph.text = structSO.structureDescription;
             GameState.Pause();
         }
         void Close()

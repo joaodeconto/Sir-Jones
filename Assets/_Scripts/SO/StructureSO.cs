@@ -3,7 +3,7 @@ using UnityEngine;
 namespace BWV
 {
     [CreateAssetMenu(fileName = "Data_Structure", menuName = "ScriptableObjects/SO_Structure", order = 1)]
-    public class SO_Structure : ScriptableObject
+    public class StructureSO : ScriptableObject
     {
         [Header("Structure Information")]
         public string structureName;
@@ -15,6 +15,7 @@ namespace BWV
         public GameObject structurePrefab;
         public GameObject structurePanel;
         public bool structureOpen;
+        public JobListSO structureJobs;
 
     }
 }

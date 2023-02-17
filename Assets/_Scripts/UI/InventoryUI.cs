@@ -17,7 +17,7 @@ namespace BWV
         private int slotAmount;
         private List<GameObject> slots = new List<GameObject>();
 
-        public void SetupInventory(Dictionary<SO_InventoryItem, int> inventory)
+        public void SetupInventory(Dictionary<InventoryItemSO, int> inventory)
         {
             // Show inventory panel
             inventoryPanel.SetActive(true);
@@ -45,7 +45,7 @@ namespace BWV
             UpdateInventory(inventory);
         }
 
-        public void UpdateInventory(Dictionary<SO_InventoryItem, int> inventory)
+        public void UpdateInventory(Dictionary<InventoryItemSO, int> inventory)
         {
             // Loop through each inventory slot and set its item and quantity
             for (int i = 0; i < slots.Count; i++)
@@ -53,7 +53,7 @@ namespace BWV
                 GameObject slot = slots[i];
 
                 // Get the item and quantity for this slot
-                SO_InventoryItem item = inventory.Keys.ElementAt(i);
+                InventoryItemSO item = inventory.Keys.ElementAt(i);
                 int quantity = inventory.Values.ElementAt(i);
 
                 // Set the item and quantity for this slot

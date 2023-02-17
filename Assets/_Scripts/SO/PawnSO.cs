@@ -3,7 +3,7 @@ using UnityEngine;
 namespace BWV
 {
     [CreateAssetMenu(fileName = "Pawn", menuName = "ScriptableObjects/Pawn")]
-    public class SO_Pawn : ScriptableObject
+    public class PawnSO : ScriptableObject
     {
         public string playerName;
         public Color playerColor; //TODO color[] pallete

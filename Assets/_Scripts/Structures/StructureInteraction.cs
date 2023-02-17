@@ -7,7 +7,7 @@ namespace BWV
         public GameObject interactionMenu;
         public Transform entranceStructure;
         public bool isSelected;
-        public SO_Structure dataStructure;
+        public StructureSO dataStructure;
 
         private void Start()
         {

@@ -8,10 +8,10 @@ namespace BWV
         public Image icon;
         public Text quantityText;
 
-        private SO_InventoryItem _item;
+        private InventoryItemSO _item;
         private int _quantity;
 
-        public void SetItem(SO_InventoryItem item, int quantity)
+        public void SetItem(InventoryItemSO item, int quantity)
         {
             _item = item;
             _quantity = quantity;

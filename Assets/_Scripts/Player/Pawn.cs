@@ -6,12 +6,13 @@ namespace BWV
     public class Pawn : MonoBehaviour
     {
         #region Fields
-        public SO_Pawn pawnData;
+        public PawnSO pawnData;
         public GameObject pawnMesh;
         public DistanceTraveled distanceTraveled;
         public TMP_Text pawnTag;
         public Goals pawnGoals;
         public PawnStats pawnStats;
+        public Job pawnJob;
         public float spentTime;
         public float maxTime;
         public float TotalTime { get { return spentTime + distanceTraveled.distanceTraveled; } }

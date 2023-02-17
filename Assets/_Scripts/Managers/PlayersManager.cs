@@ -8,7 +8,7 @@ namespace BWV
     public class PlayersManager : MonoBehaviour
     {
         #region Fields
-        public SO_Pawn[] playersPreset;
+        public PawnSO[] playersPreset;
         public static List<GameObject> playersIngame = new();
         public static event UnityAction OnPlayersSetup;
 
