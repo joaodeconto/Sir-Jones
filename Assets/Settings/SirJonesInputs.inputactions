@@ -60,7 +60,7 @@
                     "name": "",
                     "id": "4708a390-0679-423f-a731-93949fa39a8f",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
                     "action": "Click",
@@ -501,7 +501,7 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse + Keyboard",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -512,7 +512,7 @@
                     "path": "<Pen>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "TouchScreen",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -523,7 +523,7 @@
                     "path": "<Touchscreen>/touch*/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "TouchScreen",
                     "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -534,7 +534,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse + Keyboard",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -556,7 +556,7 @@
                     "path": "<Touchscreen>/touch*/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "TouchScreen",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -567,7 +567,7 @@
                     "path": "<XRController>/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Quest 2 VR",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -578,7 +578,7 @@
                     "path": "<Mouse>/scroll",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse + Keyboard",
                     "action": "ScrollWheel",
                     "isComposite": false,
                     "isPartOfComposite": false

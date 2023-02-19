@@ -12,18 +12,21 @@ namespace BWV
         public static event GameStartEvent OnGameStart;
 
         public TMP_Text headerText;
-        public GameObject playerSelectionParent;
         public GameObject playerButtonPrefab;
+        public GameObject playersImage;
+        public GameObject jonesImage;
 
         private int maxPlayers = 4;
         private int selectedPlayers = 1;
 
         private void Start()
         {
+            jonesImage.SetActive(false);
+            playersImage.SetActive(true);
             headerText.text = "Select Number of Players";
             for (int i = 1; i <= maxPlayers; i++)
             {
-                GameObject button = Instantiate(playerButtonPrefab, playerSelectionParent.transform);
+                GameObject button = Instantiate(playerButtonPrefab, playersImage.transform);
                 button.GetComponentInChildren<TMP_Text>().text = i.ToString();
                 int playerCount = i;
                 button.GetComponent<Button>().onClick.AddListener(() => SelectPlayers(playerCount));
@@ -32,18 +35,20 @@ namespace BWV
 
         private void SelectPlayers(int playerCount)
         {
+            jonesImage.SetActive(true);
+            playersImage.SetActive(false);
             selectedPlayers = playerCount;
             headerText.text = "Play Against Sir Jones?";
-            foreach (Transform child in playerSelectionParent.transform)
+            foreach (Transform child in jonesImage.transform)
             {
                 Destroy(child.gameObject);
             }
 
-            GameObject yesButton = Instantiate(playerButtonPrefab, playerSelectionParent.transform);
+            GameObject yesButton = Instantiate(playerButtonPrefab, jonesImage.transform);
             yesButton.GetComponentInChildren<TMP_Text>().text = "Yes";
             yesButton.GetComponent<Button>().onClick.AddListener(() => StartGame(selectedPlayers, true));
 
-            GameObject noButton = Instantiate(playerButtonPrefab, playerSelectionParent.transform);
+            GameObject noButton = Instantiate(playerButtonPrefab, jonesImage.transform);
             noButton.GetComponentInChildren<TMP_Text>().text = "No";
             noButton.GetComponent<Button>().onClick.AddListener(() => StartGame(selectedPlayers, false));
         }

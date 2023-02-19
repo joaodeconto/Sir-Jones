@@ -16,6 +16,7 @@ namespace BWV
         public GameObject structurePanel;
         public bool structureOpen;
         public JobListSO structureJobs;
+        public Sprite structureSprite;
 
     }
 }

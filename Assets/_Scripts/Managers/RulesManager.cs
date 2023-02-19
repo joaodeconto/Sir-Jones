@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
 using System.Collections.Generic;
-
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace BWV
 {
@@ -10,7 +10,6 @@ namespace BWV
     {
         #region Events
         public static event UnityAction OnTurnEnd;
-        public static event UnityAction OnTurnStart;
         #endregion
 
         #region Fields
@@ -38,6 +37,9 @@ namespace BWV
 
         void Update()
         {
+
+            if (_pawn == null || !_pawn.isActiveAndEnabled) return;
+
             if (GameState.IsInGame || GameState.IsPaused)
             {
                 UIManager.Inst.RefreshTimeSlider(maxMovement, _pawn.TotalTime);

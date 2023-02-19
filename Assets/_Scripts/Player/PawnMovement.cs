@@ -8,7 +8,6 @@ namespace BWV
     {
         public NavMeshAgent agent;
         private Vector2 touchPosition;
-        public float distanceTraveled;
         public StructureType targetStrucure;
 
         private void OnClick()
@@ -23,7 +22,7 @@ namespace BWV
 
         private void Update()
         {
-            if (GameState.state != GameState.State.InGame) return;
+            if (!GameState.IsInGame) return;
 
             if (touchPosition != Vector2.zero)
             {

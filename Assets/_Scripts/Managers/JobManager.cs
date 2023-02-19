@@ -48,6 +48,7 @@ namespace BWV
                     return false;
                 }
             }
+            Debug.Log("GOT JOB " + job.jobName);
             return true;
         }
         

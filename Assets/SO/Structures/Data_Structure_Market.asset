@@ -24,3 +24,5 @@ MonoBehaviour:
   structurePrefab: {fileID: 0}
   structurePanel: {fileID: 0}
   structureOpen: 0
+  structureJobs: {fileID: 0}
+  structureSprite: {fileID: 21300000, guid: ce3aecf1c34e376409cb3a0506c16b17, type: 3}

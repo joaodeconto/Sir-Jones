@@ -15,26 +15,16 @@ namespace BWV
         public TMP_Text text_Paragraph;
         private JobListSO jobList;
         private Pawn _pawn;
+        public Image structureSprite;
         private StructureSO structSO;
 
         private void Start()
         {
-            //GAMBI made variable public
-            //text_Header = transform.Find("Text_Header").GetComponent<TMP_Text>();
-            //text_Paragraph = transform.Find("Text_Paragraph").GetComponent<TMP_Text>();
-            // jobButton = transform.Find("Button_Job").GetComponent<Button>();
-            //closeButton = transform.Find("Button_Exit").GetComponent<Button>();
-            //acceptButton = transform.Find("Button_Do").GetComponent<Button>();
             jobButton.onClick.AddListener(JobButton);
             acceptButton.onClick.AddListener(AcceptAction);            
             closeButton.onClick.AddListener(Close);
             this.gameObject.SetActive(false);
         }
-        private void OnEnable()
-        {
-            _pawn = RulesManager._pawn;
-        }
-
         private void JobButton()
         {
             // Clear any existing options in the dropdown
@@ -89,8 +79,10 @@ namespace BWV
             UIManager.Inst.statsPanel.RefreshGoals(_pawn.pawnGoals);
         }
         public void Open(StructureSO data)
-        {
+        {            
             structSO = data;
+            _pawn = RulesManager._pawn;
+            structureSprite.sprite = structSO.structureSprite;
             jobList = structSO.structureJobs;
             this.gameObject.SetActive(true);
             text_Header.text = structSO.structureName;
