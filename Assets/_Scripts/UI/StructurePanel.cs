@@ -91,8 +91,8 @@ namespace BWV
         }
         void Close()
         {
-            this.gameObject.SetActive(false);
             GameState.InGame();
+            this.gameObject.SetActive(false);
         }
     }
 }

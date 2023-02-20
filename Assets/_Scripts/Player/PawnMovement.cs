@@ -22,14 +22,13 @@ namespace BWV
 
         private void Update()
         {
-            if (!GameState.IsInGame) return;
+            if (!GameState.IsInGame) touchPosition = Vector2.zero;
 
             if (touchPosition != Vector2.zero)
             {
                 Ray ray = Camera.main.ScreenPointToRay(touchPosition);
-                RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
                 {
                     Debug.Log("Hit " + hit.transform.name);
                     agent.destination = hit.point;

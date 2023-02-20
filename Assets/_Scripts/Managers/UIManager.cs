@@ -8,6 +8,7 @@ namespace BWV
     {
         public static UIManager Inst;
 
+        public GameObject mainCanvas;
         public GameObject playerPanel;
         public GameObject turnPanel;
         public GameObject gameOverPanel;
@@ -27,6 +28,7 @@ namespace BWV
         {
             if (Inst == null)
             {
+                mainCanvas.SetActive(true);
                 Inst = this;
             }
             else if (Inst != this)

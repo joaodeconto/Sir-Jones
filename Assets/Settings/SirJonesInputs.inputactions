@@ -60,7 +60,7 @@
                     "name": "",
                     "id": "4708a390-0679-423f-a731-93949fa39a8f",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
                     "action": "Click",
