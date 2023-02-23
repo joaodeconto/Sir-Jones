@@ -22,7 +22,7 @@ MonoBehaviour:
   structurePallete: []
   structureMaterial: {fileID: 2100000, guid: fef6c6022bcf73b44a4c4fc5ed28b5c8, type: 2}
   structureType: 5
-  structurePrefab: {fileID: 0}
+  structurePrefab: {fileID: 2078825188697613098, guid: 0c74e332baaee8e4da46003beb900546, type: 3}
   structurePanel: {fileID: 0}
   structureOpen: 0
   structureJobs: {fileID: 0}

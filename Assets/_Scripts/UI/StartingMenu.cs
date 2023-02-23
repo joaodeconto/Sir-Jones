@@ -57,7 +57,8 @@ namespace BWV
         {
             ClosePanel();
             OnGameStart(selectedPlayers, againstSirJones);
-            GameState.InGame();
+            GameState.Wait();
+            WorldManager.Inst.GenerateWorld();
             Debug.Log("Starting game with " + selectedPlayers + " players, against Sir Jones: " + againstSirJones);
         }
 

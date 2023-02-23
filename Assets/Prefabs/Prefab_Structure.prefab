@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 912336557505741923}
   - component: {fileID: 6686150518766422766}
   - component: {fileID: 7436109894346757683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prefab_Structure
   m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!4 &912336557505741923
 Transform:
@@ -75,12 +75,12 @@ GameObject:
   - component: {fileID: 1685519077169760275}
   - component: {fileID: 4526187385750465782}
   - component: {fileID: 7207419114664816764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh_Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!4 &1685519077169760275
 Transform:
@@ -158,12 +158,12 @@ GameObject:
   - component: {fileID: 2799588247654355605}
   - component: {fileID: 3655737506602326352}
   - component: {fileID: 5053613365629888447}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!224 &2799588247654355605
 RectTransform:

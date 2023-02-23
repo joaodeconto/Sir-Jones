@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace BWV
@@ -12,6 +13,13 @@ namespace BWV
 
         private void OnClick()
         {
+            if (EventSystem.current.currentSelectedGameObject != null
+                && EventSystem.current.currentSelectedGameObject.CompareTag("CloseButton"))
+            {
+                // Ignore input if the close button was clicked
+                return;
+            }
+
             touchPosition = Mouse.current.position.ReadValue();
         }
 
