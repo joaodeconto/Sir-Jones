@@ -10,23 +10,34 @@ namespace BWV
     {
         private StructureSO structureData;
         public MeshRenderer[] meshRenderer;
-        public TMP_Text structSign;
+        public TMP_Text structureSign;
+        public Light[] structureLights;
 
         private void Start()
         {
             structureData = gameObject.GetComponent<StructureInteraction>().dataStructure; 
-            structSign.text = structureData.structureName;
+            //structureSign.text = structureData.structureName;
             foreach(MeshRenderer renderer in meshRenderer)
             {
                 renderer.material = structureData.structureMaterial;
             }
             ActivateStruct();
+            DayNightManager.OnDayNightShift += ActivateLight;
+        }
+
+        private void ActivateLight(bool active) 
+        {
+            foreach(Light light in structureLights)
+            {
+                light.gameObject.SetActive(active);
+            }         
         }
 
         private void ActivateStruct()
         {
-            structSign.text = structureData.structureName;
-            structSign.transform.localRotation = Quaternion.Inverse(structSign.transform.root.rotation);
+            ActivateLight(false);
+            structureSign.text = structureData.structureName;
+            structureSign.transform.localRotation = Quaternion.Inverse(structureSign.transform.root.rotation);
         }
     }
 
