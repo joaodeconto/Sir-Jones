@@ -8,7 +8,9 @@ namespace BWV
         public Transform spawnArea;
         public float spawnRadius = 10f;
         public LayerMask spawnAreaLayer;
+        public float overlapMultiplaier = 1.2f;
 
+        private int overlapCount;
 
         public void SpawnStructure(StructureSO structPrefab)
         {
@@ -17,14 +19,16 @@ namespace BWV
             // Ensure the structure is aligned with the terrain by setting its y position to the height of the terrain at the chosen position
             float terrainHeight = Terrain.activeTerrain.SampleHeight(spawnPosition);
             spawnPosition.y = Terrain.activeTerrain.transform.position.y + terrainHeight;
+            if (overlapCount > 3) overlapMultiplaier = 1;
 
             // Check if there is a structure already in the spawn position
-            Collider[] overlapColliders = Physics.OverlapBox(spawnPosition, structPrefab.structurePrefab.GetComponent<BoxCollider>().size / 2f, Quaternion.identity);
+            Collider[] overlapColliders = Physics.OverlapBox(spawnPosition, structPrefab.structurePrefab.GetComponent<BoxCollider>().size * overlapMultiplaier, Quaternion.identity);
             bool isOverlapping = false;
             foreach (Collider collider in overlapColliders)
             {
                 if (collider.CompareTag("Structure"))
                 {
+                    overlapCount++;
                     isOverlapping = true;
                     break;
                 }
@@ -32,8 +36,11 @@ namespace BWV
 
             if (!isOverlapping)
             {
+
+                overlapCount = 0;
                 // Instantiate the structure at the chosen position
-                GameObject _ = Instantiate(structPrefab.structurePrefab, spawnPosition, Quaternion.identity);
+                Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+                GameObject _ = Instantiate(structPrefab.structurePrefab, spawnPosition, randomRotation);
                 _.GetComponent<StructureInteraction>().dataStructure = structPrefab;
             }
             else
