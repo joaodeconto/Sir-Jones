@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2552016011741561841}
-  distanceTraveled: 0
   targetStrucure: 0
 --- !u!114 &1334381678
 MonoBehaviour:
@@ -436,7 +435,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c0d7b223-ff2b-485c-bc81-a52e3d7e7e74
     m_ActionName: UI/TrackedDeviceOrientation
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Mouse + Keyboard
   m_DefaultActionMap: PlayerInput
   m_SplitScreenIndex: -1
