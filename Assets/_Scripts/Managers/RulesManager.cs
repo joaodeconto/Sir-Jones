@@ -72,6 +72,7 @@ namespace BWV
         {
             _pawn.CountDistance(false);
             _pawn.IsActive(false);
+            _pawn = null;
             GameState.Pause();            
             playerInTurn = (playerInTurn + 1) % PlayersManager.playersIngame.Count;
             if (playerInTurn == 0) turnCount++;

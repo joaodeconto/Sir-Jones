@@ -655,7 +655,7 @@
                     "name": "Zoom",
                     "type": "Value",
                     "id": "25170c50-9111-4c1b-bd1a-3badf022cc4d",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Delta",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -730,11 +730,11 @@
                 },
                 {
                     "name": "",
-                    "id": "e3d3141b-92b3-41d6-9f95-b9f8c6c23fc3",
+                    "id": "3ec41890-6d3b-42ae-b320-cc996712cf29",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse + Keyboard",
+                    "groups": "",
                     "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
