@@ -13,6 +13,15 @@ namespace BWV
         public TMP_Text structureSign;
         public Light[] structureLights;
 
+        private void OnEnable()
+        {
+            DayNightManager.OnDayNightShift += ActivateLight;
+        }
+        private void OnDisable()
+        {
+            DayNightManager.OnDayNightShift -= ActivateLight;
+        }
+
         private void Start()
         {
             structureData = gameObject.GetComponent<StructureInteraction>().dataStructure; 
@@ -22,7 +31,7 @@ namespace BWV
                 renderer.material = structureData.structureMaterial;
             }
             ActivateStruct();
-            DayNightManager.OnDayNightShift += ActivateLight;
+            
         }
 
         private void ActivateLight(bool active) 

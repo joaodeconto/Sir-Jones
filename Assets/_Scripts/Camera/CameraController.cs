@@ -1,82 +1,53 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
 namespace BWV
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private InputActionReference moveAction;
-        [SerializeField] private InputActionReference lookAction;
-        [SerializeField] private InputActionReference zoomAction;
+        [SerializeField] private Transform target;
+        [SerializeField] private float smoothSpeed = 0.125f;
+        [SerializeField] private Vector3 offset;
+        [SerializeField] private float fieldOfView = 0.125f;
 
-        [SerializeField] private float moveSpeed = 10f;
-        [SerializeField] private float lookSpeed = 10f;
-        [SerializeField] private float zoomSpeed = 10f;
-
-        private bool isLooking;
-
-        private void OnEnable()
+        public void RepositionCamera(Vector3 position, float fov)
         {
-            moveAction.action.Enable();
-            lookAction.action.Enable();
-            zoomAction.action.Enable();
+            Vector3 targetPosition = position + offset;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
         }
 
-        private void OnDisable()
+        void LateUpdate()
         {
-            moveAction.action.Disable();
-            lookAction.action.Disable();
-            zoomAction.action.Disable();
+            Vector3 desiredPosition = target.position + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            transform.position = smoothedPosition;
+
+            transform.LookAt(target);
         }
 
-        private void Update()
+        public IEnumerator RepositionCamera(Vector3 position, Vector3 offset)
         {
-            // Handle camera movement
-            MoveCamera();
+            Vector3 targetPosition = position + offset;
+            Vector3 finalPosition = position;
 
-            if (Mouse.current.rightButton.isPressed)
+            while (Vector3.Distance(this.transform.localPosition, finalPosition) > 0.0125f)
             {
-                LookCamera();
+                this.transform.localPosition = Vector3.Lerp(this.transform.localPosition, finalPosition, Time.deltaTime * smoothSpeed);
+                yield return null;
             }
-            else if (isLooking)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, Time.deltaTime * 10f);
-                isLooking = false;
-            }
-            // Handle camera zoom
-            float zoomInput = zoomAction.action.ReadValue<Vector2>().y;
-            transform.position += transform.forward * zoomInput * zoomSpeed * Time.deltaTime;
-            
-        }
-        private void MoveCamera()
-        {
-            // Handle camera movement
-            Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
-            Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-            float distanceToMove = moveSpeed * Time.deltaTime;
-            float sphereRadius = 0.5f;
-            RaycastHit hit;
-            if (Physics.SphereCast(transform.position, sphereRadius, moveDirection, out hit, distanceToMove))
-            {
-                // A collider was hit, don't move the camera
-            }
-            else
-            {
-                // No collider was hit, move the camera
-                transform.position += moveDirection * distanceToMove;
-            }
+            this.transform.position = finalPosition;
         }
 
-        private void LookCamera()
+        public IEnumerator AdjustPOV(float fov, float speed)
         {
-            Vector2 lookInput = lookAction.action.ReadValue<Vector2>();
-            Vector3 lookDirection = new Vector3(-lookInput.y, lookInput.x, 0);
-            transform.eulerAngles += lookDirection * lookSpeed * Time.deltaTime;
-            isLooking = true;
+            float startPosition = Camera.main.fieldOfView;
+            float finalPosition = fov;
+
+            while (Camera.main.fieldOfView != finalPosition)
+            {
+                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, finalPosition, Time.deltaTime * speed);
+                yield return null;
+            }            
         }
-        
     }
 }

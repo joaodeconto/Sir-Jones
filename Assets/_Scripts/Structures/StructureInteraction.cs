@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace BWV
@@ -28,6 +29,19 @@ namespace BWV
                     pm.targetStrucure = StructureType.none;
                 }
             }
+        }
+        public IEnumerator LandStructure( float h, float _minGap, float animatioSpeed)
+        {
+            Vector3 startPosition = this.transform.position;
+            Vector3 finalPosition = startPosition;
+            finalPosition.y += h;
+
+            while (Vector3.Distance(this.transform.localPosition, finalPosition) > _minGap)
+            {
+                this.transform.localPosition = Vector3.Lerp(this.transform.localPosition, finalPosition, Time.deltaTime * animatioSpeed);
+                yield return null;
+            }
+            this.transform.position = finalPosition;
         }
     }
 }

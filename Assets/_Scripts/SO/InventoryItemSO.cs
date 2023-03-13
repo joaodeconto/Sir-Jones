@@ -8,6 +8,7 @@ namespace BWV
         public string itemName;
         public Sprite itemIcon;
         public string description;
+        public float itemPrice;
         public int maxStackSize = 1;
     }
 }

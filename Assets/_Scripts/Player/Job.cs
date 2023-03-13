@@ -17,7 +17,7 @@ namespace BWV
             this.currentWage = jobSO.baseWage;
             this.timeWorked = 0;
             this.minTime = jobSO.minTime;
-        }
+    }
 
         public void Work(float time)
         {

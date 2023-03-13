@@ -45,7 +45,7 @@ namespace BWV
                 structureSpawner.SpawnStructure(structurePrefabs[i]);
 
                 // Wait for a short time before spawning the next structure
-                yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
+                yield return new WaitForSeconds(structureSpawner.spawnSpeed);
             }
             isSpawning= false;
         }

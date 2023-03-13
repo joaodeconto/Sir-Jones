@@ -3,9 +3,9 @@ namespace BWV
 {
     public struct Goals
     {
-        public int gold;
-        public int happiness;
-        public int favor;
-        public int title;
+        public float gold;
+        public float happiness;
+        public float favor;
+        public float title;
     }
 }

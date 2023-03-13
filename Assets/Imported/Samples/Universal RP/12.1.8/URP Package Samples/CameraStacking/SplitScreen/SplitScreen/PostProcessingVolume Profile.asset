@@ -94,25 +94,25 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 62.4
+    m_Value: 76.6
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 104.88
+    m_Value: 171.3
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 1
   highQualitySampling:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 404.71
+    m_Value: 47.4
   aperture:
     m_OverrideState: 1
-    m_Value: 22.9
+    m_Value: 3
   focalLength:
     m_OverrideState: 1
-    m_Value: 43
+    m_Value: 229
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
@@ -184,15 +184,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.70327556, y: 0.7599263, z: 1, w: 0}
+    m_Value: {x: 0.98554933, y: 1, z: 0.9424596, w: 0}
   midtones:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.8922576, y: 1, z: 0.92670816, w: 0}
   highlights:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0.9664301, y: 0.92577875, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 0

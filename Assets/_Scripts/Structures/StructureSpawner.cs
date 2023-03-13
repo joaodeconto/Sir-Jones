@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 namespace BWV
@@ -8,9 +9,13 @@ namespace BWV
         public Transform spawnArea;
         public float spawnRadius = 10f;
         public LayerMask spawnAreaLayer;
-        public float overlapMultiplaier = 1.2f;
+        public float overlapArea = 1.2f;
+        public float spawnSpeed = .2f;
+        public float animatioSpeed = 2f;
+        public float _minGap = .01f;
 
         private int overlapCount;
+        private bool isLanded = false;
 
         public void SpawnStructure(StructureSO structPrefab)
         {
@@ -18,11 +23,11 @@ namespace BWV
 
             // Ensure the structure is aligned with the terrain by setting its y position to the height of the terrain at the chosen position
             float terrainHeight = Terrain.activeTerrain.SampleHeight(spawnPosition);
-            spawnPosition.y = Terrain.activeTerrain.transform.position.y + terrainHeight;
-            if (overlapCount > 3) overlapMultiplaier = 1;
+            spawnPosition.y = terrainHeight;
+            if (overlapCount > 3) overlapArea = 1;
 
             // Check if there is a structure already in the spawn position
-            Collider[] overlapColliders = Physics.OverlapBox(spawnPosition, structPrefab.structurePrefab.GetComponent<BoxCollider>().size * overlapMultiplaier, Quaternion.identity);
+            Collider[] overlapColliders = Physics.OverlapBox(spawnPosition, structPrefab.structurePrefab.GetComponent<BoxCollider>().size * overlapArea, Quaternion.identity);
             bool isOverlapping = false;
             foreach (Collider collider in overlapColliders)
             {
@@ -41,7 +46,9 @@ namespace BWV
                 // Instantiate the structure at the chosen position
                 Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
                 GameObject _ = Instantiate(structPrefab.structurePrefab, spawnPosition, randomRotation);
-                _.GetComponent<StructureInteraction>().dataStructure = structPrefab;
+                StructureInteraction _S = _.GetComponent<StructureInteraction>();
+                _S.dataStructure = structPrefab;
+                StartCoroutine(_S.LandStructure(Terrain.activeTerrain.GetPosition().y, _minGap, animatioSpeed));
             }
             else
             {
@@ -58,5 +65,6 @@ namespace BWV
             float z = radius * Mathf.Cos(angle1);
             return center + new Vector3(x, y, z);
         }
+        
     }
 }
