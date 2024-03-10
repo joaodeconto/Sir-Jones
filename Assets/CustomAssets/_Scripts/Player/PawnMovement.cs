@@ -9,7 +9,7 @@ namespace BWV
     {
         public NavMeshAgent agent;
         private Vector2 touchPosition;
-        public StructureType targetStrucure;
+        //public StructureType targetStrucure;
 
         private void OnClick()
         {
@@ -42,14 +42,14 @@ namespace BWV
                     agent.destination = hit.point;
                     if (hit.collider.CompareTag("Structure"))
                     {
-                        //TODO check for entranceStructure  and set as current destination
+                        /* TODO check for entranceStructure  and set as current destination
                         StructureType si = hit.transform.GetComponent<StructureInteraction>().dataStructure.structureType;
                         targetStrucure = si;
                         Debug.Log("Hit structure " + si.ToString());
+                        */
                     }
-                    else targetStrucure = StructureType.none;
+                    // else targetStrucure = StructureType.none;
                 }
-
                 touchPosition = Vector2.zero;
             }
         }

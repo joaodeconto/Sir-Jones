@@ -8,7 +8,8 @@ namespace BWV
 {
     public class StructureStats : MonoBehaviour
     {
-        private StructureSO structureData;
+        public StructureSO structureData;
+        public Transform structureDoor;
         public MeshRenderer[] meshRenderer;
         public TMP_Text structureSign;
         public Light[] structureLights;

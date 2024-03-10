@@ -1,11 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BWV
 {
     public class WorldManager : MonoBehaviour
     {
+
+        #region Events
+        public static event UnityAction OnStructuresSpawned;
+        #endregion
+
         public static WorldManager Inst { get; private set; }
 
         public StructureSO[] structurePrefabs;
@@ -33,6 +41,7 @@ namespace BWV
             // Rebuild the NavMesh
             yield return RebuildNavMesh();
 
+            OnStructuresSpawned();
             // Set the game state to InGame
             GameState.InGame();
         }
@@ -43,7 +52,6 @@ namespace BWV
             for (int i = 0; i < structurePrefabs.Length; i++)
             {
                 structureSpawner.SpawnStructure(structurePrefabs[i]);
-
                 // Wait for a short time before spawning the next structure
                 yield return new WaitForSeconds(structureSpawner.spawnSpeed);
             }

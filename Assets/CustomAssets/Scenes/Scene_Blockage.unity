@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: fa50d4f63a5b7144d9c34e72e1300848, type: 2}
 --- !u!1 &25931426
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +844,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 2.3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -883,7 +883,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1717,7 +1717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452651529}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -52, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2020,7 +2020,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.48
+  near clip plane: 0.01
   far clip plane: 304.28
   field of view: 81
   orthographic: 0
@@ -2047,14 +2047,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815301242}
-  m_LocalRotation: {x: 0.2869796, y: 0.13364318, z: -0.04141312, w: 0.9476641}
-  m_LocalPosition: {x: 6.9, y: 18.9, z: -4.3}
+  m_LocalRotation: {x: 0.2461532, y: 0, z: 0, w: 0.96923095}
+  m_LocalPosition: {x: 105.5, y: 71.8, z: -96.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 25931428}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 33.71, y: 16.017, z: -0.123}
+  m_LocalEulerAnglesHint: {x: 28.5, y: 0, z: 0}
 --- !u!114 &1815301247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2475,7 +2475,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0ef14c2f52c86e4fba4220a4d7a7178, type: 2}
   - {fileID: 11400000, guid: 5609b593e6d54644a99207daa792a91b, type: 2}
   - {fileID: 11400000, guid: c7745c1c16f53bd4cb6d2f6dd1f8742f, type: 2}
-  startingRef: {x: 60.4, y: 0, z: 86.83}
+  startingRef: {x: 60.4, y: 100, z: 86.83}
 --- !u!114 &1949123464
 MonoBehaviour:
   m_ObjectHideFlags: 0

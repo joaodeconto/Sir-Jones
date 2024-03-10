@@ -18,7 +18,6 @@ namespace BWV
         public int turnCount = 0;
         public static Pawn _pawn;
 
-        private Vector3 startingPosition;
         private int playerInTurn = 0;
         private GameObject pawnInTurn;
         #endregion
@@ -35,7 +34,7 @@ namespace BWV
             PlayersManager.OnPlayersSetup -= GameStart;
         }
 
-        void Update()
+        void FixedUpdate()
         {
 
             if (_pawn == null || !_pawn.isActiveAndEnabled) return;
@@ -62,8 +61,7 @@ namespace BWV
         void TurnStart()
         {
             GameState.InGame();
-            UIManager.Inst.statsPanel.RefreshGoals(_pawn.pawnGoals);
-            pawnInTurn.transform.position = startingPosition;
+            UIManager.Inst.statsPanel.RefreshGoals(_pawn.pawnGoals);            
             _pawn.MoveStartingPosition();
             _pawn.IsActive(true);
             _pawn.CountDistance(true);

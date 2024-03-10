@@ -1,6 +1,8 @@
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace BWV
 {
@@ -13,9 +15,11 @@ namespace BWV
         public float spawnSpeed = .2f;
         public float animatioSpeed = 2f;
         public float _minGap = .01f;
-
         private int overlapCount;
         private bool isLanded = false;
+
+
+        public static List<StructureStats> StructuresList = new List<StructureStats>();
 
         public void SpawnStructure(StructureSO structPrefab)
         {
@@ -24,6 +28,7 @@ namespace BWV
             // Ensure the structure is aligned with the terrain by setting its y position to the height of the terrain at the chosen position
             float terrainHeight = Terrain.activeTerrain.SampleHeight(spawnPosition);
             spawnPosition.y = terrainHeight;
+
             if (overlapCount > 3) overlapArea = 1;
 
             // Check if there is a structure already in the spawn position
@@ -48,6 +53,8 @@ namespace BWV
                 GameObject _ = Instantiate(structPrefab.structurePrefab, spawnPosition, randomRotation);
                 StructureInteraction _S = _.GetComponent<StructureInteraction>();
                 _S.dataStructure = structPrefab;
+
+                StructuresList.Add(_.GetComponent<StructureStats>());
                 StartCoroutine(_S.LandStructure(Terrain.activeTerrain.GetPosition().y, _minGap, animatioSpeed));
             }
             else
